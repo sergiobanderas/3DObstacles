@@ -2,19 +2,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float xValue = 0.01f;
-    [SerializeField] private float yValue = 0.01f;
-    [SerializeField] private float zValue = 0.01f;
+    [SerializeField] private float speed = 10f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+        float xValue = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        float yValue = 0f;
+        float zValue = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+
+
         transform.Translate(xValue, yValue, zValue);        
     }
 }
