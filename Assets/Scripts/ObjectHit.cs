@@ -7,7 +7,7 @@ public class ObjectHit : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player has hit the object!");
+            GetComponent<Renderer>().material.color = Color.red;
         }
     }
 
