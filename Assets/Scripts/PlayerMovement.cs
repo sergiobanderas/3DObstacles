@@ -4,18 +4,30 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
 
+    private Rigidbody rb;
+    private float xInput;
+    private float zInput;
+
     void Start()
     {
+
+        rb = GetComponent<Rigidbody>();
         
     }
-    
+
     void Update()
     {
-        float xValue = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float yValue = 0f;
-        float zValue = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        xInput = Input.GetAxis("Horizontal");
+        zInput = Input.GetAxis("Vertical");
+    }
 
+    
+    void FixedUpdate()
+    {
+        Vector3 movement = new Vector3(xInput, 0f, zInput);
 
-        transform.Translate(xValue, yValue, zValue);        
+        rb.MovePosition(
+            rb.position + movement * speed * Time.fixedDeltaTime
+        );
     }
 }
