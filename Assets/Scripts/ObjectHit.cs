@@ -8,6 +8,7 @@ public class ObjectHit : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GetComponent<Renderer>().material.color = Color.red;
+            gameObject.tag = "Hit";
         }
     }
 
